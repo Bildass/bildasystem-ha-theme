@@ -53,49 +53,75 @@ Install both via HACS for best experience.
 
 The theme includes beautiful state-based animations. See [Animation Guide](docs/animations.md) for full documentation.
 
+> **Important:** Home Assistant 2024.12+ changed how icons render. The examples below use the new syntax that works with HA 2024.12+.
+
 ### Quick Examples
 
-**Spinning Fan:**
+**Spinning Fan (Cyan):**
 ```yaml
-type: custom:mushroom-fan-card
+type: custom:button-card
 entity: fan.bedroom
+icon: mdi:fan
 card_mod:
   style: |
-    ha-state-icon {
-      {% if is_state(config.entity, 'on') %}
-        animation: spin 1s linear infinite;
-      {% endif %}
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    :host { --icon-animation: none; --icon-color: inherit; }
+    {% if is_state(config.entity, 'on') %}
+    :host { --icon-animation: spin 1s linear infinite; --icon-color: #22d3ee !important; }
+    {% endif %}
+    ha-state-icon, ha-icon, mwc-icon, ha-svg-icon, svg {
+      animation: var(--icon-animation) !important;
+      color: var(--icon-color) !important;
+      transform-origin: center !important;
+      display: inline-block !important;
     }
 ```
 
-**Pulsing Light:**
+**Pulsing Light (Yellow):**
 ```yaml
-type: custom:mushroom-light-card
+type: custom:button-card
 entity: light.living_room
+icon: mdi:lightbulb
 card_mod:
   style: |
-    ha-state-icon {
-      {% if is_state(config.entity, 'on') %}
-        animation: pulse 2s ease-in-out infinite;
-      {% endif %}
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.15); }
+    }
+    :host { --icon-animation: none; --icon-color: inherit; }
+    {% if is_state(config.entity, 'on') %}
+    :host { --icon-animation: pulse 2s ease-in-out infinite; --icon-color: #fbbf24 !important; }
+    {% endif %}
+    ha-state-icon, ha-icon, mwc-icon, ha-svg-icon, svg {
+      animation: var(--icon-animation) !important;
+      color: var(--icon-color) !important;
+      transform-origin: center !important;
+      display: inline-block !important;
     }
 ```
 
 **Temperature Colors:**
 ```yaml
-type: custom:mushroom-entity-card
+type: custom:button-card
 entity: sensor.temperature
+icon: mdi:thermometer
 card_mod:
   style: |
-    ha-state-icon {
-      {% set temp = states(config.entity) | float %}
+    {% set temp = states(config.entity) | float(0) %}
+    :host {
       {% if temp < 18 %}
-        color: #3b82f6 !important;
+      --icon-color: #3b82f6 !important;
       {% elif temp < 24 %}
-        color: #22c55e !important;
+      --icon-color: #22c55e !important;
       {% else %}
-        color: #ef4444 !important;
+      --icon-color: #ef4444 !important;
       {% endif %}
+    }
+    ha-state-icon, ha-icon, mwc-icon, ha-svg-icon, svg {
+      color: var(--icon-color) !important;
     }
 ```
 

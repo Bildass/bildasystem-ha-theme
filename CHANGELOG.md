@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-12-11
+
+### Fixed
+- **BREAKING**: Updated animation syntax for Home Assistant 2024.12+ compatibility
+- Old `ha-state-icon` targeting no longer works in HA 2024.12+
+- Icons now use nested `mwc-icon > ha-svg-icon > svg` structure
+
+### Changed
+- Animation examples now use CSS custom properties on `:host`
+- All animation examples target multiple icon elements: `ha-state-icon, ha-icon, mwc-icon, ha-svg-icon, svg`
+- Added `display: inline-block !important` and `transform-origin: center !important` to all animations
+- Documentation completely rewritten with working HA 2024.12+ examples
+
+### Added
+- Complete grid example with multiple animated cards
+- Variable speed fan animation based on percentage
+- Troubleshooting section for common animation issues
+
 ## [1.1.0] - 2025-12-11
 
 ### Fixed
