@@ -1,0 +1,284 @@
+---
+# BildaSystem Theme for Home Assistant
+# https://github.com/Bildass/bildasystem-ha-theme
+# Version: 1.0.0
+
+BildaSystem Dark:
+  # ═══════════════════════════════════════════════════════════════
+  # PRIMARY COLORS - BildaSystem signature blue palette
+  # ═══════════════════════════════════════════════════════════════
+  primary-color: "#3b82f6"
+  accent-color: "#60a5fa"
+  light-primary-color: "#93c5fd"
+  dark-primary-color: "#1d4ed8"
+
+  # ═══════════════════════════════════════════════════════════════
+  # BACKGROUNDS - Slate dark tones
+  # ═══════════════════════════════════════════════════════════════
+  primary-background-color: "#020617"
+  secondary-background-color: "#0f172a"
+  card-background-color: "#1e293b"
+  paper-card-background-color: "#1e293b"
+
+  # RGB versions for rgba() usage
+  rgb-primary-background-color: "2, 6, 23"
+  rgb-secondary-background-color: "15, 23, 42"
+  rgb-card-background-color: "30, 41, 59"
+
+  # ═══════════════════════════════════════════════════════════════
+  # TEXT COLORS
+  # ═══════════════════════════════════════════════════════════════
+  primary-text-color: "#f1f5f9"
+  secondary-text-color: "#94a3b8"
+  text-primary-color: "#f1f5f9"
+  text-light-primary-color: "#f8fafc"
+  disabled-text-color: "#475569"
+
+  # ═══════════════════════════════════════════════════════════════
+  # STATE COLORS - Entity states
+  # ═══════════════════════════════════════════════════════════════
+  state-icon-color: "#64748b"
+  state-icon-active-color: "#3b82f6"
+  state-icon-unavailable-color: "#334155"
+
+  # Switch & Toggle
+  switch-checked-color: "#3b82f6"
+  switch-unchecked-button-color: "#475569"
+  switch-unchecked-track-color: "#1e293b"
+
+  # Entity domain colors
+  state-light-on-color: "#fbbf24"
+  state-switch-on-color: "#3b82f6"
+  state-fan-on-color: "#22d3ee"
+  state-climate-heat-color: "#ef4444"
+  state-climate-cool-color: "#3b82f6"
+  state-binary_sensor-on-color: "#22c55e"
+  state-cover-open-color: "#f59e0b"
+
+  # ═══════════════════════════════════════════════════════════════
+  # SIDEBAR - Navigation
+  # ═══════════════════════════════════════════════════════════════
+  sidebar-background-color: "#0f172a"
+  sidebar-icon-color: "#64748b"
+  sidebar-text-color: "#cbd5e1"
+  sidebar-selected-icon-color: "#3b82f6"
+  sidebar-selected-text-color: "#f1f5f9"
+
+  # ═══════════════════════════════════════════════════════════════
+  # HEADER / APP BAR
+  # ═══════════════════════════════════════════════════════════════
+  app-header-background-color: "#0f172a"
+  app-header-text-color: "#f1f5f9"
+  app-header-edit-background-color: "#1e293b"
+
+  # ═══════════════════════════════════════════════════════════════
+  # CARDS - ha-card styling
+  # ═══════════════════════════════════════════════════════════════
+  ha-card-background: "#1e293b"
+  ha-card-border-radius: "12px"
+  ha-card-box-shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
+  ha-card-header-color: "#f1f5f9"
+
+  # ═══════════════════════════════════════════════════════════════
+  # DIALOG / POPUP
+  # ═══════════════════════════════════════════════════════════════
+  dialog-backdrop-filter: "blur(10px)"
+  mdc-dialog-scrim-color: "rgba(2, 6, 23, 0.8)"
+
+  # ═══════════════════════════════════════════════════════════════
+  # LOVELACE DASHBOARD
+  # ═══════════════════════════════════════════════════════════════
+  lovelace-background: "#020617"
+
+  # ═══════════════════════════════════════════════════════════════
+  # STATUS COLORS
+  # ═══════════════════════════════════════════════════════════════
+  error-color: "#ef4444"
+  warning-color: "#f59e0b"
+  success-color: "#22c55e"
+  info-color: "#3b82f6"
+
+  # ═══════════════════════════════════════════════════════════════
+  # DIVIDERS & BORDERS
+  # ═══════════════════════════════════════════════════════════════
+  divider-color: "#334155"
+  mdc-text-field-idle-line-color: "#475569"
+  mdc-text-field-hover-line-color: "#3b82f6"
+
+  # ═══════════════════════════════════════════════════════════════
+  # INPUT FIELDS
+  # ═══════════════════════════════════════════════════════════════
+  input-fill-color: "#1e293b"
+  input-ink-color: "#f1f5f9"
+  input-label-ink-color: "#94a3b8"
+  input-disabled-fill-color: "#0f172a"
+  input-disabled-ink-color: "#475569"
+
+  # ═══════════════════════════════════════════════════════════════
+  # BUTTONS
+  # ═══════════════════════════════════════════════════════════════
+  mdc-button-outline-color: "#3b82f6"
+  mdc-button-disabled-fill-color: "#1e293b"
+
+  # ═══════════════════════════════════════════════════════════════
+  # SLIDERS & PROGRESS
+  # ═══════════════════════════════════════════════════════════════
+  paper-slider-knob-color: "#3b82f6"
+  paper-slider-active-color: "#3b82f6"
+  paper-slider-container-color: "#334155"
+  paper-progress-active-color: "#3b82f6"
+  paper-progress-container-color: "#1e293b"
+
+  # ═══════════════════════════════════════════════════════════════
+  # TABLES & LISTS
+  # ═══════════════════════════════════════════════════════════════
+  table-row-background-color: "#1e293b"
+  table-row-alternative-background-color: "#0f172a"
+  data-table-background-color: "#1e293b"
+
+  # ═══════════════════════════════════════════════════════════════
+  # CHIPS
+  # ═══════════════════════════════════════════════════════════════
+  chip-background-color: "#334155"
+  chip-text-color: "#f1f5f9"
+
+  # ═══════════════════════════════════════════════════════════════
+  # CODE EDITOR
+  # ═══════════════════════════════════════════════════════════════
+  code-editor-background-color: "#0f172a"
+  codemirror-keyword: "#c084fc"
+  codemirror-operator: "#f1f5f9"
+  codemirror-variable: "#fbbf24"
+  codemirror-variable-2: "#22d3ee"
+  codemirror-variable-3: "#f472b6"
+  codemirror-builtin: "#60a5fa"
+  codemirror-atom: "#fb923c"
+  codemirror-number: "#4ade80"
+  codemirror-def: "#60a5fa"
+  codemirror-string: "#4ade80"
+  codemirror-string-2: "#4ade80"
+  codemirror-comment: "#64748b"
+  codemirror-tag: "#f87171"
+  codemirror-meta: "#94a3b8"
+  codemirror-attribute: "#fbbf24"
+  codemirror-property: "#60a5fa"
+  codemirror-qualifier: "#c084fc"
+
+  # ═══════════════════════════════════════════════════════════════
+  # ENERGY DASHBOARD
+  # ═══════════════════════════════════════════════════════════════
+  energy-grid-consumption-color: "#ef4444"
+  energy-grid-return-color: "#22c55e"
+  energy-solar-color: "#fbbf24"
+  energy-battery-in-color: "#3b82f6"
+  energy-battery-out-color: "#8b5cf6"
+
+  # ═══════════════════════════════════════════════════════════════
+  # CARD-MOD INTEGRATION - Requires card-mod HACS addon
+  # ═══════════════════════════════════════════════════════════════
+  card-mod-theme: BildaSystem Dark
+
+  # Global card styling
+  card-mod-card: |
+    ha-card {
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    ha-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+  # Row hover effect
+  card-mod-row: |
+    :host {
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    :host(:hover) {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+  # More Info dialog styling
+  card-mod-more-info: |
+    ha-dialog {
+      --dialog-backdrop-filter: blur(10px);
+    }
+
+  # ═══════════════════════════════════════════════════════════════
+  # CUSTOM CSS ANIMATIONS - Use with card-mod
+  # ═══════════════════════════════════════════════════════════════
+  #
+  # Spinning fan animation:
+  # animation: spin 1s linear infinite;
+  #
+  # Pulsing light animation:
+  # animation: pulse 2s ease-in-out infinite;
+  #
+  # See documentation for usage examples:
+  # https://github.com/Bildass/bildasystem-ha-theme#animations
+  # ═══════════════════════════════════════════════════════════════
+
+# Optional Light Mode variant
+BildaSystem Light:
+  # Primary colors
+  primary-color: "#2563eb"
+  accent-color: "#3b82f6"
+
+  # Backgrounds
+  primary-background-color: "#f8fafc"
+  secondary-background-color: "#f1f5f9"
+  card-background-color: "#ffffff"
+
+  # Text
+  primary-text-color: "#1e293b"
+  secondary-text-color: "#64748b"
+  text-primary-color: "#1e293b"
+
+  # States
+  state-icon-color: "#94a3b8"
+  state-icon-active-color: "#2563eb"
+  switch-checked-color: "#2563eb"
+
+  # Sidebar
+  sidebar-background-color: "#f1f5f9"
+  sidebar-icon-color: "#64748b"
+  sidebar-text-color: "#475569"
+  sidebar-selected-icon-color: "#2563eb"
+  sidebar-selected-text-color: "#1e293b"
+
+  # Header
+  app-header-background-color: "#f1f5f9"
+  app-header-text-color: "#1e293b"
+
+  # Cards
+  ha-card-background: "#ffffff"
+  ha-card-border-radius: "12px"
+  ha-card-box-shadow: "0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)"
+
+  # Lovelace
+  lovelace-background: "#f8fafc"
+
+  # Status colors
+  error-color: "#dc2626"
+  warning-color: "#d97706"
+  success-color: "#16a34a"
+  info-color: "#2563eb"
+
+  # Dividers
+  divider-color: "#e2e8f0"
+
+  # Card-mod
+  card-mod-theme: BildaSystem Light
+  card-mod-card: |
+    ha-card {
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      transition: all 0.3s ease;
+    }
+    ha-card:hover {
+      border-color: rgba(37, 99, 235, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+    }

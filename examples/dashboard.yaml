@@ -1,0 +1,270 @@
+# BildaSystem Theme - Example Dashboard
+# Copy this to your Lovelace dashboard to see the theme in action
+
+title: BildaSystem Demo
+views:
+  - title: Home
+    path: home
+    icon: mdi:home
+    cards:
+      # Header Card
+      - type: markdown
+        content: |
+          # Welcome Home
+          BildaSystem Theme Demo Dashboard
+        card_mod:
+          style: |
+            ha-card {
+              background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(30, 41, 59, 0.8) 100%);
+              border: none;
+            }
+            ha-markdown {
+              padding: 20px;
+            }
+
+      # Horizontal Stack - Quick Controls
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: light.living_room
+            name: Living Room
+            icon: mdi:sofa
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% if is_state(config.entity, 'on') %}
+                    animation: pulse 2s ease-in-out infinite;
+                    color: #fbbf24 !important;
+                  {% endif %}
+                }
+
+          - type: custom:mushroom-entity-card
+            entity: fan.bedroom
+            name: Fan
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% if is_state(config.entity, 'on') %}
+                    animation: spin 1s linear infinite;
+                  {% endif %}
+                }
+
+          - type: custom:mushroom-entity-card
+            entity: climate.thermostat
+            name: Climate
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% if is_state_attr(config.entity, 'hvac_action', 'heating') %}
+                    color: #ef4444 !important;
+                    animation: pulse 1s ease-in-out infinite;
+                  {% elif is_state_attr(config.entity, 'hvac_action', 'cooling') %}
+                    color: #3b82f6 !important;
+                    animation: pulse 1.5s ease-in-out infinite;
+                  {% endif %}
+                }
+
+      # Temperature Sensors
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: sensor.living_room_temperature
+            name: Living Room
+            icon: mdi:thermometer
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% set temp = states(config.entity) | float(0) %}
+                  {% if temp < 18 %}
+                    color: #3b82f6 !important;
+                  {% elif temp < 22 %}
+                    color: #22c55e !important;
+                  {% elif temp < 26 %}
+                    color: #f59e0b !important;
+                  {% else %}
+                    color: #ef4444 !important;
+                  {% endif %}
+                }
+
+          - type: custom:mushroom-entity-card
+            entity: sensor.bedroom_temperature
+            name: Bedroom
+            icon: mdi:thermometer
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% set temp = states(config.entity) | float(0) %}
+                  {% if temp < 18 %}
+                    color: #3b82f6 !important;
+                  {% elif temp < 22 %}
+                    color: #22c55e !important;
+                  {% elif temp < 26 %}
+                    color: #f59e0b !important;
+                  {% else %}
+                    color: #ef4444 !important;
+                  {% endif %}
+                }
+
+          - type: custom:mushroom-entity-card
+            entity: sensor.outdoor_temperature
+            name: Outside
+            icon: mdi:home-thermometer-outline
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% set temp = states(config.entity) | float(0) %}
+                  {% if temp < 0 %}
+                    color: #8b5cf6 !important;
+                  {% elif temp < 10 %}
+                    color: #3b82f6 !important;
+                  {% elif temp < 20 %}
+                    color: #22c55e !important;
+                  {% elif temp < 30 %}
+                    color: #f59e0b !important;
+                  {% else %}
+                    color: #ef4444 !important;
+                  {% endif %}
+                }
+
+      # Security Section
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: "## Security"
+            card_mod:
+              style: |
+                ha-card {
+                  background: transparent;
+                  box-shadow: none;
+                  border: none;
+                }
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.front_door
+                name: Front Door
+                icon: mdi:door
+                card_mod:
+                  style: |
+                    ha-state-icon {
+                      transition: transform 0.3s ease, color 0.3s ease;
+                      {% if is_state(config.entity, 'on') %}
+                        transform: rotateY(-20deg);
+                        color: #f59e0b !important;
+                      {% else %}
+                        color: #22c55e !important;
+                      {% endif %}
+                    }
+
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.motion_hallway
+                name: Motion
+                icon: mdi:motion-sensor
+                card_mod:
+                  style: |
+                    @keyframes flash {
+                      0%, 100% { opacity: 1; }
+                      50% { opacity: 0.3; }
+                    }
+                    ha-state-icon {
+                      {% if is_state(config.entity, 'on') %}
+                        color: #f59e0b !important;
+                        animation: flash 0.5s ease-in-out 3;
+                      {% endif %}
+                    }
+
+              - type: custom:mushroom-entity-card
+                entity: lock.front_door
+                name: Lock
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-state-icon {
+                      {% if is_state(config.entity, 'locked') %}
+                        color: #22c55e !important;
+                      {% else %}
+                        color: #ef4444 !important;
+                        animation: pulse 0.5s ease-in-out infinite;
+                      {% endif %}
+                    }
+
+      # Media Player
+      - type: custom:mushroom-media-player-card
+        entity: media_player.living_room
+        use_media_info: true
+        show_volume_level: true
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state(config.entity, 'playing') %}
+                border-color: rgba(59, 130, 246, 0.4) !important;
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.2) !important;
+              {% endif %}
+            }
+
+      # Vacuum
+      - type: custom:mushroom-vacuum-card
+        entity: vacuum.roborock
+        commands:
+          - start_pause
+          - stop
+          - return_home
+        card_mod:
+          style: |
+            ha-state-icon {
+              {% if is_state(config.entity, 'cleaning') %}
+                animation: spin 2s linear infinite;
+                color: #3b82f6 !important;
+              {% elif is_state(config.entity, 'returning') %}
+                animation: pulse 1s ease-in-out infinite;
+                color: #22c55e !important;
+              {% elif is_state(config.entity, 'error') %}
+                color: #ef4444 !important;
+                animation: pulse 0.3s ease-in-out infinite;
+              {% endif %}
+            }
+
+      # Battery Levels
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: sensor.phone_battery
+            name: Phone
+            icon: mdi:cellphone
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% set level = states(config.entity) | int(0) %}
+                  {% if level < 20 %}
+                    color: #ef4444 !important;
+                    animation: pulse 0.5s ease-in-out infinite;
+                  {% elif level < 50 %}
+                    color: #f59e0b !important;
+                  {% else %}
+                    color: #22c55e !important;
+                  {% endif %}
+                }
+
+          - type: custom:mushroom-entity-card
+            entity: sensor.tablet_battery
+            name: Tablet
+            icon: mdi:tablet
+            card_mod:
+              style: |
+                ha-state-icon {
+                  {% set level = states(config.entity) | int(0) %}
+                  {% if level < 20 %}
+                    color: #ef4444 !important;
+                    animation: pulse 0.5s ease-in-out infinite;
+                  {% elif level < 50 %}
+                    color: #f59e0b !important;
+                  {% else %}
+                    color: #22c55e !important;
+                  {% endif %}
+                }
